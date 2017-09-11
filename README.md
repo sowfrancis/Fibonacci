@@ -1,10 +1,10 @@
 # Fibonacci
 
-Fibonacci is an recrietment exercice for Enercoop. The goal is quite simple, we have here a sample app with a very basic login, your job is to improve the sign up form. Good luck !
+Fibonacci is a recruitment exercise for Enercoop. The goal is quite simple, we have here a sample app with a very basic login, your job is to improve the sign up form. Good luck !
 
 # How to take the test ?
 
-Fork this repo into your own Github account. Then create a branch called 'solution' where you make your changes. Once you're done, create a pull request from your 'solution' branch into your 'master' branch. Don't merge it, just send us the link so we can review it.
+Fork this repo into your own Github account. Then create a branch called 'solution' where you make your changes. Once you're done, create a pull request from your 'solution' branch into your 'master' branch. **Don't merge it**, just send us the link so we can review it.
 
 # Install
 
@@ -12,9 +12,9 @@ First of all, you need to install docker-compose : https://docs.docker.com/compo
 
 Once you have docker-compose installed, run `docker-compose up` at the root of your project to start :
 
-* A postgresql container named 'db'
-* A rails container named 'web'
-* A rubocop/guard container named 'rubocop'
+* A postgresql container named *db*
+* A rails container named *web*
+* A rubocop/guard container named *rubocop*
 
 Then you need to create your database by running :
 
@@ -40,7 +40,7 @@ You should now be able to go to `http://localhost:3000` and start coding !
 
 # What is there ?
 
-The app you've just installed already has some small features. Let's see that from the Gemfile perspective ...
+The app you've just installed has already some features. Let's see that from the Gemfile perspective ...
 
 ```ruby
 # Use Slim for views
@@ -65,7 +65,7 @@ group :development, :test do
 end
 ```
 
-# Exercice
+# Exercise
 
 As we said earlier, your goal is to improve our sign up form.
 
@@ -83,7 +83,7 @@ This is where you intervene. We want you to update this very simple form into a 
 
 ![](https://raw.githubusercontent.com/enercoop/Fibonacci/master/public/readme/sign_up_2of2.png)
 
-We will not tell you strong rules about how to make the form, and what it should do, just make it as good as you can. But if you just don't know how to start, here are a few guidelines you can follow :
+We will not tell you strong rules about how to make the form, and what it should do, just make it as good as you can. But if you don't know how to start, here are a few guidelines you can follow :
 
 * Set up field validations
 * Use a state machine (AASM) for the multi-step form
@@ -91,6 +91,7 @@ We will not tell you strong rules about how to make the form, and what it should
 * Check your syntax using rubocop
 * Maybe send a welcome mail using a background job
 * Maybe install rspec, export the Clearance feature specs (`rails generate clearance:specs`) and update them
+* Maybe allow the user to close its browser, then come back and recover his session
 
 Now that you have done all of that, you can sign up, and if you did it well, you should see our dashboard page :
 
