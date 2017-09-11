@@ -25,6 +25,19 @@ $ docker-compose run web rake db:migrate
 
 You should now be able to go to `http://localhost:3000` and start coding !
 
+> Note : if you're using Linux, you may encounter a common DNS problem. You will know if the build fails during the `apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs` command. Solve this by doing :
+* Find your DNS IP : `nmcli device show | grep IP4.DNS`
+* Open the docker config file : `sudo vim /etc/default/docker`
+* Add your DNS : `DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --dns [your_dns]"`
+* Open the docker service file : `sudo vim /lib/systemd/system/docker.service`
+* Replace the ExecStart line with your DNS : `ExecStart=/usr/bin/dockerd --dns [your_dns] --dns 8.8.8.8 --dns 8.8.4.4 -H fd://`
+* Restart docker :
+```
+$ sudo service docker stop
+$ systemctl daemon-reload
+$ sudo service docker start
+```
+
 # What is there ?
 
 The app you've just installed already has some small features. Let's see that from the Gemfile perspective ...
