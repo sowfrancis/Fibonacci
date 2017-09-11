@@ -1,24 +1,86 @@
-# README
+# Fibonacci
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fibonacci is an recrietment exercice for Enercoop. The goal is quite simple, we have here a sample app with a very basic login, your job is to improve the sign up form. Good luck !
 
-Things you may want to cover:
+# How to take the test ?
 
-* Ruby version
+Fork this repo into your own Github account. Then create a branch called 'solution' where you make your changes. Once you're done, create a pull request from your 'solution' branch into your 'master' branch. Don't merge it, just send us the link so we can review it.
 
-* System dependencies
+# Install
 
-* Configuration
+First of all, you need to install docker-compose : https://docs.docker.com/compose/install/
 
-* Database creation
+Once you have docker-compose installed, run `docker-compose up` at the root of your project to start :
 
-* Database initialization
+* A postgresql container named 'db'
+* A rails container named 'web'
+* A rubocop/guard container named 'rubocop'
 
-* How to run the test suite
+Then you need to create your database by running :
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ docker-compose run web rake db:create
+$ docker-compose run web rake db:migrate
+```
 
-* Deployment instructions
+You should now be able to go to `http://localhost:3000` and start coding !
 
-* ...
+# What is there ?
+
+The app you've just installed already has some small features. Let's see that from the Gemfile perspective ...
+
+```ruby
+# Use Slim for views
+gem 'slim', '~> 3.0.6'
+
+# Use Clearance for authentication & authorization with email & password
+gem 'clearance', '~> 1.16'
+
+# SimpleForm made forms easy!
+gem 'simple_form', '~> 3.5'
+
+# Bootstrap for style
+gem 'bootstrap', '~> 4.0.0.beta'
+
+# AASM is a continuation of the acts-as-state-machine rails plugin, built for plain Ruby objects
+gem 'aasm', '~> 4.12', '>= 4.12.2'
+
+group :development, :test do
+  # Rubocop is a Ruby code style checking tool
+  gem 'guard', '~> 2.14', '>= 2.14.1'
+  gem 'guard-rubocop', '~> 1.3'
+end
+```
+
+# Exercice
+
+As we said earlier, your goal is to improve our sign up form.
+
+If you go to `http://localhost:3000/`, you should see our home page :
+
+![](https://raw.githubusercontent.com/enercoop/Fibonacci/master/public/readme/home.png)
+
+Here, you should be able to click on the 'Sign up !' button, and go to the sign up page :
+
+![](https://raw.githubusercontent.com/enercoop/Fibonacci/master/public/readme/sign_up.png)
+
+This is where you intervene. We want you to update this very simple form into a two step form that should look like this :
+
+![](https://raw.githubusercontent.com/enercoop/Fibonacci/master/public/readme/sign_up_1of2.png)
+
+![](https://raw.githubusercontent.com/enercoop/Fibonacci/master/public/readme/sign_up_2of2.png)
+
+We will not tell you strong rules about how to make the form, and what it should do, just make it as good as you can. But if you just don't know how to start, here are a few guidelines you can follow :
+
+* Set up field validations
+* Use a state machine (AASM) for the multi-step form
+* Allow the user to go back to step one
+* Check your syntax using rubocop
+* Maybe send a welcome mail using a background job
+* Maybe install rspec, export the Clearance feature specs (`rails generate clearance:specs`) and update them
+
+Now that you have done all of that, you can sign up, and if you did it well, you should see our dashboard page :
+
+![](https://raw.githubusercontent.com/enercoop/Fibonacci/master/public/readme/dashboard.png)
+
+Well done indeed !
