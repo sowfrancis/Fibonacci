@@ -10,7 +10,7 @@ Fork this repo into your own Github account. Then create a branch called 'soluti
 
 First of all, you need to install docker-compose : https://docs.docker.com/compose/install/
 
-Once you have docker-compose installed, run `docker-compose up` at the root of your project to start :
+Once you have docker-compose installed and running, use the `docker-compose up` command at the root of your project to install and launch :
 
 * A postgresql container named *db*
 * A rails container named *web*
@@ -24,6 +24,17 @@ $ docker-compose run web rake db:migrate
 ```
 
 You should now be able to go to `http://localhost:3000` and start coding !
+
+You can stop the application with `Ctrl-C`, or with `docker-compose down`
+
+> Note : if you're stopping the application with `Ctrl-C`, and attempt to restart it, you might get the following error:
+> ```
+> web_1 | A server is already
+> running. Check /myapp/tmp/pids/server.pid.
+> ```
+> To solve this, delete the file `tmp/pids/server.pid` and re-start the application with `docker-compose up`
+
+For more complete infos on how to use Docker with Rails, you can read the quikstart guide [here](https://docs.docker.com/compose/rails/).
 
 > Note : if you're using Linux, you may encounter a common DNS problem. You will know if the build fails during the `apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs` command. Solve this by doing :
 > * Find your DNS IP : `nmcli device show | grep IP4.DNS`
