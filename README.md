@@ -74,6 +74,15 @@ group :development, :test do
 end
 ```
 
+If you are not familiar with these gems, you can read the docs : 
+
+* [Slim](http://slim-lang.com/)
+* [Clearance](https://github.com/thoughtbot/clearance)
+* [Simple Form](https://github.com/plataformatec/simple_form)
+* [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+* [AASM](https://github.com/aasm/aasm)
+* [Rubocop](https://github.com/bbatsov/rubocop) (see our config file [here](https://github.com/enercoop/Fibonacci/blob/master/.rubocop.yml))
+
 # Exercise
 
 As we said earlier, your goal is to improve our sign up form.
