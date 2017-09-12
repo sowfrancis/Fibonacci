@@ -16,26 +16,6 @@ Once you have docker-compose installed and running, use the `docker-compose up` 
 * A rails container named *web*
 * A rubocop/guard container named *rubocop*
 
-Then you need to create your database by running :
-
-```
-$ docker-compose run web rake db:create
-$ docker-compose run web rake db:migrate
-```
-
-You should now be able to go to `http://localhost:3000` and start coding !
-
-You can stop the application with `Ctrl-C`, or with `docker-compose down`
-
-> Note : if you're stopping the application with `Ctrl-C`, and attempt to restart it, you might get the following error:
-> ```
-> web_1 | A server is already
-> running. Check /myapp/tmp/pids/server.pid.
-> ```
-> To solve this, delete the file `tmp/pids/server.pid` and re-start the application with `docker-compose up`
-
-For more complete infos on how to use Docker with Rails, you can read the quikstart guide [here](https://docs.docker.com/compose/rails/).
-
 > Note : if you're using Linux, you may encounter a common DNS problem. You will know if the build fails during the `apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs` command. Solve this by doing :
 > * Find your DNS IP : `nmcli device show | grep IP4.DNS`
 > * Open the docker config file : `sudo vim /etc/default/docker`
@@ -48,6 +28,24 @@ For more complete infos on how to use Docker with Rails, you can read the quikst
 > $ systemctl daemon-reload
 > $ sudo service docker start
 > ```
+
+Then you need to create your database by running :
+
+```
+$ docker-compose run web rake db:create
+$ docker-compose run web rake db:migrate
+```
+
+You should now be able to go to `http://localhost:3000` and start coding ! If you want to stop coding, you can stop the application with `Ctrl-C`, or with `docker-compose down`.
+
+> Note : if you're stopping the application with `Ctrl-C`, and attempt to restart it, you might get the following error:
+> ```
+> web_1 | A server is already
+> running. Check /myapp/tmp/pids/server.pid.
+> ```
+> To solve this, delete the file `tmp/pids/server.pid` and re-start the application with `docker-compose up`.
+
+For more complete infos on how to use Docker with Rails, you can read the quikstart guide [here](https://docs.docker.com/compose/rails/).
 
 # What is there ?
 
