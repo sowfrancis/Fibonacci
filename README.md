@@ -10,7 +10,7 @@ Fork this repo into your own Github account. Then create a branch called 'soluti
 
 First of all, you need to install docker-compose : https://docs.docker.com/compose/install/
 
-Once you have docker-compose installed, run `docker-compose up` at the root of your project to start :
+Once you have docker-compose installed and running, use the `docker-compose up` command at the root of your project to install and launch :
 
 * A postgresql container named *db*
 * A rails container named *web*
@@ -40,6 +40,24 @@ Oh ! By the way, if you are not familiar with Docker and fail to run your classi
 > $ sudo service docker start
 > ```
 
+Then you need to create your database by running :
+
+```
+$ docker-compose run web rake db:create
+$ docker-compose run web rake db:migrate
+```
+
+You should now be able to go to `http://localhost:3000` and start coding ! If you want to stop coding, you can stop the application with `Ctrl-C`, or with `docker-compose down`.
+
+> Note : if you're stopping the application with `Ctrl-C`, and attempt to restart it, you might get the following error:
+> ```
+> web_1 | A server is already
+> running. Check /myapp/tmp/pids/server.pid.
+> ```
+> To solve this, delete the file `tmp/pids/server.pid` and re-start the application with `docker-compose up`.
+
+For more complete infos on how to use Docker with Rails, you can read the quikstart guide [here](https://docs.docker.com/compose/rails/).
+
 # What is there ?
 
 The app you've just installed has already some features. Let's see that from the Gemfile perspective ...
@@ -66,6 +84,15 @@ group :development, :test do
   gem 'guard-rubocop', '~> 1.3'
 end
 ```
+
+If you are not familiar with these gems, you can read the docs :
+
+* [Slim](http://slim-lang.com/)
+* [Clearance](https://github.com/thoughtbot/clearance)
+* [Simple Form](https://github.com/plataformatec/simple_form)
+* [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+* [AASM](https://github.com/aasm/aasm)
+* [Rubocop](https://github.com/bbatsov/rubocop) (see our config file [here](https://github.com/enercoop/Fibonacci/blob/master/.rubocop.yml))
 
 # Exercise
 
