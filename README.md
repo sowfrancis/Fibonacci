@@ -25,6 +25,8 @@ $ docker-compose run web rake db:migrate
 
 You should now be able to go to `http://localhost:3000` and start coding !
 
+Oh ! By the way, if you are not familiar with Docker and fail to run your classic `rails` commands, it is probably because you're not specifying the Docker container in wich to run them. As a general rule, you may want to prefix all your commands by `docker-compose run web [your_command]`. Or, you could launch a bash in the 'web' container and run your commands from there : `docker-compose run web /bin/bash`.
+
 > Note : if you're using Linux, you may encounter a common DNS problem. You will know if the build fails during the `apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs` command. Solve this by doing :
 > * Find your DNS IP : `nmcli device show | grep IP4.DNS`
 > * Open the docker config file : `sudo vim /etc/default/docker`
