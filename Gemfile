@@ -35,6 +35,8 @@ gem 'simple_form', '~> 3.5'
 gem 'bootstrap', '~> 4.0.0.beta'
 # AASM is a continuation of the acts-as-state-machine rails plugin, built for plain Ruby objects
 gem 'aasm', '~> 4.12', '>= 4.12.2'
+#pry
+gem "pry"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,6 +47,8 @@ group :development, :test do
   # Rubocop is a Ruby code style checking tool
   gem 'guard', '~> 2.14', '>= 2.14.1'
   gem 'guard-rubocop', '~> 1.3'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'fabrication'
 end
 
 group :development do
