@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validate :validate_password
   validates_presence_of :email, :firstname, :lastname, :number, :street, :zip, :city
+  has_one :situation
 
   def validate_password
     if !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./)
