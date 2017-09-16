@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validate :validate_password
   validates_presence_of :email, :firstname, :lastname, :number, :street, :zip, :city
   has_one :situation
+  has_one :technical_info
 
   def validate_password
     if !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./)
