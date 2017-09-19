@@ -36,7 +36,8 @@ gem 'bootstrap', '~> 4.0.0.beta'
 # AASM is a continuation of the acts-as-state-machine rails plugin, built for plain Ruby objects
 gem 'aasm', '~> 4.12', '>= 4.12.2'
 #pry
-gem "pry"
+gem 'pry'
+gem 'sidekiq'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

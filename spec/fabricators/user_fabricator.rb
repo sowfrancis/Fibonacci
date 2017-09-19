@@ -1,8 +1,8 @@
 Fabricator(:user) do
-  email      ''
+  email      'sow.francis@gmail.com'
   firstname  'francis'
   lastname   'sow'
-  password   ''
+  password   'Spiderman1'
   street     'rue des partants'
   number     '7'
   city       'paris'

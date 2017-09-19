@@ -1,0 +1,48 @@
+div id='marketing'
+  div id='step'
+    div id='step_one'
+      h2 1
+    div id='step_two'
+      h2 2
+  div id='sign_up' class='card'
+    = simple_form_for @user, class:'mt-5' do |f|
+      - if @user.first_step?
+        h3 Personnal informations
+        = f.input :firstname, label: false, placeholder: 'First name'
+        = f.input :lastname, label: false, placeholder: 'Last name'
+        hr
+        h3 Adress
+        div class='row'
+          div class='col-md-4'
+            = f.input :number, label: false, placeholder: 'Number'
+            = f.input :zip, label: false, placeholder: 'zip'
+          div class='col-md-8'
+            = f.input :street, label: false, placeholder: 'street'
+            = f.input :city, label: false, placeholder: 'city'
+        hr
+        h3 Sign in informations
+        = f.input :email, label: false, placeholder: 'Email'
+        = f.input :password, label: false, placeholder: 'Password'
+        = f.button :submit, 'Sign up', disabled: false, class: 'btn btn-outiline-success btn-lg'
+        javascript:
+          $('#step_one').css('background', 'yellow')
+
+      - if @user.second_step?
+        h3 Situation
+        = f.simple_fields_for :situation do |situation|
+          = situation.input :move_in, label: 'I move in', as: :boolean
+          = situation.input :new_house, label: 'I built a new flat/house', as: :boolean
+          = situation.input :new_access, label: 'I new a temporary access', as: :boolean
+        hr
+        h3 Technical informations
+        = f.simple_fields_for :technical_info do |tech|
+          = tech.input :pdl, label: 'PDL'
+        - if session[:user_id].present?
+          = link_to "back", modify_form_path(@user), class: 'btn btn-outiline-success btn-lg'
+        = f.button :submit, 'Sign up', disabled: false, class: 'btn btn-outiline-success btn-lg'
+
+        javascript:
+          $('#step_two').css('background', 'yellow');
+          $('input.boolean').on('change', function() {
+            $('input.boolean').not(this).prop('checked', false);
+          });
